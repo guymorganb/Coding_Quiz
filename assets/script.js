@@ -7,7 +7,7 @@
 const questions = [
     {   
     title : "Coding Quiz Challenge",
-    intro : "Try to answer the following code-related question within the time limit. Keep in mind incorrect answers will peanalize your score/time by ten seconds!",
+    intro : "Try to answer the following code-related question within the time limit. Keep in mind incorrect answers will peanalize your score/time!",
     start : "Start Quiz",
     answerType : ["Right!", "Wrong!"]
     },
