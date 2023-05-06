@@ -41,7 +41,7 @@ This webpage can be navigated to and acessed with a browser. It does not require
 
 8) At this point the Quiz is over, and the "go back" button can be used to start the quiz over.
 
-9) Although I did not see this issue list as part of the assignment criteria, Its worth noting, that if the user is in the middle of the quiz, and decides to View High Scores, it will trigger duplice elements being created, but the user will still be able to enter their score if they let the time expire. If any occurance like this occurs, clicking the "go back" button should solve the problem and reset the quiz.
+9) Although I did not see this issue listed as part of the assignment criteria, Its worth noting, that if the user is in the middle of the quiz, and decides to View High Scores, it will trigger duplice elements being created, but the user will still be able to enter their score if they let the time expire. If any occurance like this occurs, clicking the "go back" button will reset the quiz.
 
 
 - Please follow this link to access the repository https://github.com/guymorganb/Coding_Quiz
