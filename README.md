@@ -9,6 +9,8 @@
 
 - I was able to expand my knowleged of JavaScript and how it can be applied to the working needs of a user. I was also able to understand the level of detail that goes into even something simple like this applocation.
 
+![step 1](https://github.com/guymorganb/Coding_Quiz/blob/main/assets/screenshot.png?raw=true)
+
 ## Table of Contents (N/A)
 - [Installation](#installation)
 - [Usage](#usage)
