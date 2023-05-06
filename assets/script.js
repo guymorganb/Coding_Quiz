@@ -55,17 +55,14 @@ const questions = [
 //////// end of Object Questions Array ////////
 ///////////////// Create a dynamic timer /////////////////
 const dynamicTimer = function(){
-    counter --;
     if (counter <= 0){
     time.textContent = 'Time up!';
     questionIndex = 6;
-    staticTimer = setTimeout(update, 750);
+    update()
     clearInterval(timer);
     counter = null;
-    }else if(counter == null){
-        clearInterval(timer);
-    }
-    else{
+    }else if(counter > 0){
+    counter --;
     time.textContent = `Time: ${counter}`
     };
 };
@@ -92,48 +89,10 @@ function populateScores (){
     let removeLi = document.querySelectorAll('#highScores');
     removeLi.forEach(function(removeLi){
     removeLi.remove();
-    })
-    }
-}
-////////////////////// Score Answers /////////////////////// 
-function viewScores(){
-    populateScores();
-    console.log(questionIndex);
-    // make an <li> to hold buttons
-    let lastLi = document.createElement('li');
-    line.insertAdjacentElement('beforebegin', lastLi);
-    // make the back button
-    let backBtn = document.createElement('button');
-    backBtn.innerText = 'Go Back'
-    lastLi.appendChild(backBtn);
-    // make the clear scores button 
-    let clearScores = document.createElement('button');
-    clearScores.textContent = 'Clear Scores';
-    // append the buttons and set id's
-    backBtn.insertAdjacentElement('afterend', clearScores);
-    backBtn.id = 'button1';
-    clearScores.id = 'button2';   
-// event listener for back button click
-    backBtn.addEventListener('click', function(){
-    // reset to initial state
-    clearScores.remove();
-    backBtn.remove();
-    lastLi.remove();
-    if(localStorage.length != 0){
-    // code that clears the list of scores without refreshing the page
-    let removeScores = document.querySelectorAll('#highScores');
-    removeScores.forEach(function(removeScores){
-    removeScores.remove();
     });
     };
-    init();
-    })
-// event listner for the clearscores button
-    clearScores.addEventListener('click', function(){
-    localStorage.clear();
-    staticTimer = setTimeout(populateScores, 750);
-    })
-}
+};
+////////////////////// Score Answers /////////////////////// 
 function checkScores(){
     li.setAttribute('style', 'display: none;');
     startButton.setAttribute('style', 'display: none;');
@@ -146,8 +105,10 @@ function init(){
     h1.textContent = questions[0].title;
     li.textContent = questions[0].intro;
     startButton.textContent = questions[0].start;
-    counter = 25;
+    line.setAttribute('style','border: 1px solid lightslategray;', 'max-width: 50vw;', 'animation: fadeIn ease-in-out 1s;', 'opacity: 1;');
+    counter = 45;
     questionIndex = 0;
+    clearInterval(timer);
     // event listener for ViewHigScores
     viewHighScores.addEventListener('click', checkScores);
 // start button event listener
@@ -252,6 +213,7 @@ function update () {
 };
     }else if(questionIndex === 6){
     console.log('Where you want to be');
+    clearInterval(timer);
     // increment the question Index
     questionIndex += 1;
     // set h1 to the next question
@@ -274,7 +236,47 @@ function update () {
     li.style.display = 'none';
     viewScores();
     }
-
+};
+function viewScores(){
+    populateScores();
+    console.log(questionIndex);
+    // make an <li> to hold buttons
+    let lastLi = document.createElement('li');
+    line.insertAdjacentElement('beforebegin', lastLi);
+    // make the back button
+    let backBtn = document.createElement('button');
+    backBtn.innerText = 'Go Back'
+    lastLi.appendChild(backBtn);
+    // make the clear scores button 
+    let clearScores = document.createElement('button');
+    clearScores.textContent = 'Clear Scores';
+    // append the buttons and set id's
+    backBtn.insertAdjacentElement('afterend', clearScores);
+    backBtn.id = 'button1';
+    clearScores.id = 'button2';   
+// event listener for back button click
+    backBtn.addEventListener('click', function(){
+// decided to use location.reload() because of timer conflicts, but wanted to keep this code for later
+        // reset to initial state
+    // clearScores.remove();
+    // backBtn.remove();
+    // lastLi.remove();
+    // clearInterval(timer)
+    // clearTimeout(staticTimer)
+    // if(localStorage.length != 0){
+    // // code that clears the list of scores without refreshing the page
+    // let removeScores = document.querySelectorAll('#highScores');
+    // removeScores.forEach(function(removeScores){
+    // removeScores.remove();
+    // });
+    // };
+    location.reload()
+    })
+// event listner for the clearscores button
+    clearScores.addEventListener('click', function(){
+    localStorage.clear();
+    staticTimer = setTimeout(populateScores, 750);
+    });
 };
 function processForm(){
     // create container for the form and append the container after the previous <li>
@@ -341,7 +343,7 @@ let userScore = 0;
 let timer = null;
 let staticTimer = null;
     // Countdown starting time
-let counter = 25;
+let counter = 45;
     // set variables for the for-loops
 let numButtons = 4;
 let parentElement = li; 
